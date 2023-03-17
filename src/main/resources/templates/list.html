@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <script src="https://kit.fontawesome.com/87b0878f1a.js" crossorigin="anonymous"></script>-->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>liste de musique</title>
+</head>
+<body>
+<div class="container">
+  <h1>Ma liste de musique</h1>
+  <a href="add-music" type="button" class="btn btn-primary">Créer une musique
+  </a>
+
+  <table class="table">
+      <thead>
+          <tr>
+              <th class="col">#</th>
+              <th class="col">Title</th>
+              <th class="col">Description</th>
+              <th class="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr th:each="music: ${musics}">
+          <td th:text="${music.music_id}"></td>
+          <td th:text="${music.title}"></td>
+          <td th:text="${music.description}"></td>
+          <td>
+              <a th:href="@{/view/{id}(id=${music.music_id})}">SHOW</a>
+              <a th:href="@{/edit-music/{id}(id=${music.music_id})}">UPDATE</a>
+              <a href="#">DELETE</a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
